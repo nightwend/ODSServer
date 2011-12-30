@@ -1,0 +1,16 @@
+ODS basically uses http range requests to fetch blocks off a disk
+image which is advertised via mdns.
+
+just run the server and then use the following to advertise a disk
+image on a lunix box:
+
+avahi-publish -s HOSTNAME _odisk._tcp 65432 \
+    "disk2s0=adVN=DiskImage,adVT=public.cd-media" \
+    "sys=waMA=A4:BA:DB:E7:89:CD,adVF=0x4,adDT=0x3,adCC=1"
+
+im sure people on other platforms can figure the equivilent out.
+
+when the mdns npm module is updated to build against node 0.6 i'll
+add support for the server to publish its own mdns records.
+
+dlg
